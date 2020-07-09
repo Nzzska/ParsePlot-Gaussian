@@ -31,38 +31,54 @@ for filename in os.listdir('logs/'):
                     words=lines.split()
                     e1.append(words[4])
                     osc=words[8].split('=')
-                    osc1.append(osc)
+                    osc1.append(osc[1])
                 if lines.startswith(' Excited State   2'):
                     lines.strip()
                     words=lines.split()
                     e2.append(words[4])
                     osc=words[8].split('=')
-                    osc2.append(osc)
+                    osc2.append(osc[1])
                 if lines.startswith(' Excited State   3'):
                     lines.strip()
                     words=lines.split()
                     e3.append(words[4])
                     osc=words[8].split('=')
-                    osc3.append(osc)
+                    osc3.append(osc[1])
 baseline=min(base)
 for x in range(0,len(base)) :
     base[x]=base[x]-baseline
     e1[x]=float(e1[x])+base[x]
     e2[x]=float(e2[x])+base[x]
     e3[x]=float(e3[x])+base[x]
+    osc1[x]=float(osc1[x])
+    osc2[x]=float(osc2[x])
+    osc3[x]=float(osc3[x])
     
 #DATA PLOTTING
 
 deg = np.arange(0.0, 375.0, 15.0)
-fig, ax = plt.subplots()
-ax.plot(deg, base, label='ground state')
-ax.plot(deg, e1, label='excited state 1')
-ax.plot(deg, e2, label ='excited state 2')
-ax.plot(deg, e3, label='excited state 3')
-legend=ax.legend()
+
+#figure 1
+plt.figure(1)
+plt.plot(deg, base, label='ground state')
+plt.plot(deg, e1, label='excited state 1')
+plt.plot(deg, e2, label ='excited state 2')
+plt.plot(deg, e3, label='excited state 3')
+legend=plt.legend()
 plt.xlabel('Dehydral angle (deg)')
 plt.ylabel('Energy (eV)')
 plt.title('Excited states')
 plt.grid(True)
 plt.savefig("ExcitedStates.png")
-plt.show()
+
+#figure 2
+plt.figure(2)
+plt.plot(deg, osc1, label='orciliator 1')
+plt.plot(deg, osc2, label='orciliator 2')
+plt.plot(deg, osc3, label='orciliator 3')
+legend=plt.legend()
+plt.xlabel('Dehydral angle (deg)')
+plt.ylabel('Oscilliator strength ')
+plt.title('Oscilliator strength')
+plt.grid(True)
+plt.savefig("Oscilliatoriai.png")
