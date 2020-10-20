@@ -1,4 +1,1 @@
-# ParsePlot-Gaussian
-Pythono scriptas skirtas apdoroti Gaussiane gautus duomenys
-
-Ateityje planuoju patobulinti šitą programą, kad galėtu prisijunti prie superkompiuterio SSH ir passiimti duomenys tiesiai iš ten.
+![alt text](https://github.com/Nzzska/ParsePlot-Gaussian/blob/master/excel%20screenshot.PNG?raw=true)
